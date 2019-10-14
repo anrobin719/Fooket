@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // entry point, output, loaders, plugins
 module.exports = {
   // 함께 번들할 파일 의존성을 띈 파일을 정한다.
-  entry: "./src/js/index.js",
+  entry: ["babel-polyfill", "./src/js/index.js"],
   // 어디에 저장할지 정한다.
   output: {
     // 현재의 absolute path(__dirname)를 번들이 포함되기 원하는 경로(dist)와 함께 포함시킨다.
@@ -28,5 +28,18 @@ module.exports = {
         template: "./src/index.html"
       }
     )
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        // test는 .js로 된 모든 파일을 찾는다.
+        test: /\.js$/,
+        // exclude로 설정한 파일은 제외한다.
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
 };

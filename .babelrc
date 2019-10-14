@@ -1,0 +1,15 @@
+{
+    // preset은 코드 변환 플러그인의 모음이다.
+    "presets": [
+        [
+            "env", {
+                "targets": {
+                    "browsers": [
+                        "last 5 versions",
+                        "ie >= 8"
+                    ]
+                }
+            }
+        ]
+    ]
+}
