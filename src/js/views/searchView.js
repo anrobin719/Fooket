@@ -9,6 +9,17 @@ export const clearResults = () => {
   elements.searchResPages.innerHTML = "";
 };
 
+export const highlightSelected = id => {
+  const resultArr = Array.from(document.querySelectorAll(".result__link"));
+  resultArr.forEach(el => {
+    el.classList.remove("result__link--active");
+  });
+
+  document
+    .querySelector(`a[href="#${id}"]`)
+    .classList.add("result__link--active");
+};
+
 // 'Pasta with tomato and spinach'
 const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
